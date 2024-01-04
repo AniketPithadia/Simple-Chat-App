@@ -4,7 +4,7 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries}
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyB35oZcDLSkDo664b6sG5MJSiryonUcNpw",
+  apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "mern-chat-app-c5f6f.firebaseapp.com",
   projectId: "mern-chat-app-c5f6f",
   storageBucket: "mern-chat-app-c5f6f.appspot.com",
