@@ -183,24 +183,26 @@ wss.on("connection", (connection, req) => {
   connection.on("message", async (message) => {
     const messageData = JSON.parse(message.toString());
     const { recipient, text, file } = messageData;
-    let filename = null;
+    let fileUrl = null;
     if (file) {
+      fileUrl = file.data;
+      console.log("file", file);
       console.log("size", file.data.length);
-      const parts = file.name.split(".");
-      const ext = parts[parts.length - 1];
-      filename = Date.now() + "." + ext;
-      const path = __dirname + "/uploads/" + filename;
-      const bufferData = new Buffer(file.data.split(",")[1], "base64");
-      fs.writeFile(path, bufferData, () => {
-        console.log("file saved:" + path);
-      });
+      // const parts = file.name.split(".");
+      // const ext = parts[parts.length - 1];
+      // filename = Date.now() + "." + ext;
+      // const path = __dirname + "/uploads/" + filename;
+      // const bufferData = new Buffer(file.data.split(",")[1], "base64");
+      // fs.writeFile(path, bufferData, () => {
+      //   console.log("file saved:" + path);
+      // });
     }
     if (recipient && (text || file)) {
       const messageDoc = await Message.create({
         sender: connection.userId,
         recipient,
         text,
-        file: file ? filename : null,
+        file: file ? fileUrl : null,
       });
       console.log("created message");
       [...wss.clients]
@@ -211,7 +213,7 @@ wss.on("connection", (connection, req) => {
               text,
               sender: connection.userId,
               recipient,
-              file: file ? filename : null,
+              file: file ? fileUrl : null,
               _id: messageDoc._id,
             })
           )
