@@ -25,7 +25,7 @@ export default function Chat() {
     connectToWs();
   }, [selectedUserId]);
   function connectToWs() {
-    const ws = new WebSocket("wss://simple-chat-app-8qet.vercel.app");
+    const ws = new WebSocket("ws://simple-chat-app-8qet.vercel.app");
     setWs(ws);
     ws.addEventListener("message", handleMessage);
     ws.addEventListener("close", () => {
