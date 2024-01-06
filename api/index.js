@@ -29,7 +29,8 @@ app.use(
   cors({
     origin: "https://simple-chat-app-mu.vercel.app",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept",
+    allowedHeaders:
+      "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Access-Control-Allow-Methods, Access-Control-Allow-Credentials",
     credentials: true,
   })
 );
