@@ -3,7 +3,7 @@ import { UserContextProvider } from "./UserContext";
 import Routes from "./Routes";
 
 function App() {
-  axios.defaults.baseURL = "/";
+  axios.defaults.baseURL = "https://simple-chat-app-8qet.vercel.app/";
   axios.defaults.withCredentials = true;
   return (
     <UserContextProvider>
