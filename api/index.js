@@ -28,10 +28,27 @@ app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
-    origin: "https://simple-chat-app-8qet.vercel.app/",
+    origin: "https://simple-chat-app-mu.vercel.app",
   })
 );
 
+app.use((req, res, next) => {
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://simple-chat-app-mu.vercel.app"
+  );
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+  if (req.method === "OPTIONS") {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
+});
 async function getUserDataFromRequest(req) {
   return new Promise((resolve, reject) => {
     const token = req.cookies?.token;
