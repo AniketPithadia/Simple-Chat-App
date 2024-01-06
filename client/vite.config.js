@@ -8,7 +8,7 @@ export default defineConfig({
       "/": {
         target: "https://simple-chat-app-8qet.vercel.app/", // Replace with your backend server URL
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""),
+        rewrite: (path) => path.replace(/^\//, ""),
       },
     },
   },
