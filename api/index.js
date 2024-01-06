@@ -130,7 +130,11 @@ app.post("/register", async (req, res) => {
   }
 });
 
-const server = app.listen(4040);
+const server = app.createServer({
+  key: "492a95f8a6a5c02eda82599afd2098d11fda58c198c92e3dfd9b6ff7e7412f65",
+  cert: "5fd15e07e1b511493ec43de15bb3227c4ce6177755097c9f194471eb2e3ec223",
+});
+server.listen(4000);
 
 const wss = new ws.WebSocketServer({
   server,
