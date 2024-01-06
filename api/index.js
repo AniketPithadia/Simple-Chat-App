@@ -38,7 +38,6 @@ app.use((req, res, next) => {
   );
   next();
 });
-app.options("*", cors());
 
 async function getUserDataFromRequest(req) {
   return new Promise((resolve, reject) => {
