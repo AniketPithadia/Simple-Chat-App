@@ -134,6 +134,7 @@ const server = app.listen(4040);
 
 const wss = new ws.Server({
   port: 443,
+  server,
 });
 wss.on("connection", (connection, req) => {
   function notifyAboutOnlinePeople() {
