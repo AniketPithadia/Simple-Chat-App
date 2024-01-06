@@ -25,8 +25,7 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-app.options(
-  "*",
+app.use(
   cors({
     origin: "https://simple-chat-app-mu.vercel.app",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
@@ -34,6 +33,7 @@ app.options(
     credentials: true,
   })
 );
+app.options("*");
 
 async function getUserDataFromRequest(req) {
   return new Promise((resolve, reject) => {
