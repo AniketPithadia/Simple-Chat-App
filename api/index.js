@@ -132,7 +132,10 @@ app.post("/register", async (req, res) => {
 
 const server = app.listen(4040);
 
-const wss = new ws.WebSocketServer({ server });
+const wss = new ws.WebSocketServer({
+  server,
+  path: "/wss",
+});
 wss.on("connection", (connection, req) => {
   function notifyAboutOnlinePeople() {
     [...wss.clients].forEach((client) => {
@@ -213,7 +216,11 @@ wss.on("connection", (connection, req) => {
         );
     }
   });
-
+  connection.on("close", (code, reason) => {
+    console.log(`Connection closed with code ${code} and reason ${reason}`);
+    clearInterval(connection.timer);
+    notifyAboutOnlinePeople();
+  });
   // notify everyone about online people (when someone connects)
   notifyAboutOnlinePeople();
 });
