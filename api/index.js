@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: "https://simple-chat-app-mu.vercel.app/",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
     optionsSuccessStatus: 200,
 
     credentials: true,
