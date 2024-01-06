@@ -28,12 +28,12 @@ export default function Chat() {
     const ws = new WebSocket("wss://simple-chat-app-8qet.vercel.app");
     setWs(ws);
     ws.addEventListener("message", handleMessage);
-    // ws.addEventListener("close", () => {
-    //   setTimeout(() => {
-    //     console.log("Disconnected. Trying to reconnect.");
-    //     connectToWs();
-    //   }, 1000);
-    // });
+    ws.addEventListener("close", () => {
+      setTimeout(() => {
+        console.log("Disconnected. Trying to reconnect.");
+        connectToWs();
+      }, 1000);
+    });
   }
   function showOnlinePeople(peopleArray) {
     const people = {};
