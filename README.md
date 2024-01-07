@@ -32,8 +32,9 @@ Before you begin, ensure you have the following installed on your machine:
 ```bash
 
 cd mern-chat-app
-Install dependencies:
 ```
+3.Install dependencies:
+
 
 ```bash
 
